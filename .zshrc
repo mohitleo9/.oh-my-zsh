@@ -49,7 +49,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode zsh-syntax-highlighting zsh-autosuggestions history-substring-search fasd)
+plugins=(git vi-mode history-substring-search fasd)
 export EDITOR='vim'
 
 # User configuration
@@ -64,6 +64,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+source ~/.oh-my-zsh/plugins/zsh-autosuggestions/autosuggestions.zsh
 # Enable autosuggestions automatically.
 AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=242'
 zle-line-init() {
