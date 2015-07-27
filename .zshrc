@@ -93,6 +93,25 @@ bindkey '^e' end-of-line
 #
 # Example aliases
 
+#this line is for the macvim to funtion properly Don't remove it
+# python stuff
+export DYLD_FORCE_FLAT_NAMESPACE=1
+
+# tell the virtualenv to lay off prompt
+VIRTUAL_ENV_DISABLE_PROMPT=true
+# set where virutal environments will live
+export WORKON_HOME=$HOME/.virtualenvs
+# ensure all new environments are isolated from the site-packages directory
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+# use the same directory for virtualenvs as virtualenvwrapper
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+# makes pip detect an active virtualenv and install to it
+export PIP_RESPECT_VIRTUALENV=true
+if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+fi
 # source custom functions
 source $ZSH/scripts/githubCreate.sh
 
