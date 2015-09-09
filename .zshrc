@@ -118,6 +118,7 @@ source $ZSH/scripts/githubCreate.sh
 
 alias gst="git status"
 alias glo="git log"
+alias gdc="git diff --cached"
 alias gco="git checkout"
 alias gbr="git branch"
 alias ls="ls -aF -G"
