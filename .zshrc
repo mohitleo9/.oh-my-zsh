@@ -52,6 +52,8 @@ DISABLE_AUTO_TITLE="true"
 plugins=(git vi-mode history-substring-search fasd)
 export EDITOR='vim'
 
+if [[ $TERM_PROGRAM == 'iTerm.app' && -z $TMUX ]]; then export NVIM_TUI_ENABLE_TRUE_COLOR=1; fi
+
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -96,8 +98,9 @@ bindkey '^e' end-of-line
 
 #this line is for the macvim to funtion properly Don't remove it
 # python stuff
-export DYLD_FORCE_FLAT_NAMESPACE=1
-
+# export DYLD_FORCE_FLAT_NAMESPACE=1
+export LDFLAGS=-L/usr/local/opt/sqlite/lib
+export CPPFLAGS=-I/usr/local/opt/sqlite/include
 # tell the virtualenv to lay off prompt
 VIRTUAL_ENV_DISABLE_PROMPT=true
 # set where virutal environments will live
