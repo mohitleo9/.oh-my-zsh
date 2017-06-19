@@ -63,8 +63,6 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 source ~/.oh-my-zsh/plugins/zsh-autosuggestions/autosuggestions.zsh
 # Enable autosuggestions automatically.
@@ -127,6 +125,7 @@ alias gbr="git branch"
 alias ls="ls -aF -G"
 alias gpu="git pull"
 alias gdf="git diff"
+alias gdfw="git diff --color-words"
 alias gph="git push -u"
 alias lsd="ls -d"
 alias gclean="git clean -df"
@@ -136,6 +135,12 @@ alias tag="git ls-files applications/gymnasium/src | ctags --tag-relative -L - -
 # this is in case of error of opening macvim
 # http://stackoverflow.com/questions/17537871/macvim-failed-to-start-after-connecting-to-a-extra-display-and-disconnected
 alias clearvim='rm -r ~/Library/Preferences/*.vim.*'
+alias editHosts='sudo mvim -f /etc/hosts && dscacheutil -flushcache'
+
+# roadmunk alias
+alias rminspect='docker-compose run --rm --service-ports app node --inspect server.js -w1'
+# stops at first line
+alias rminspectstart='docker-compose run --rm --service-ports app node --inspect --debug-brk server.js -w1'
 
 
 # this lets you view man pages in vim NOT KIDDING
@@ -168,3 +173,24 @@ bindkey '^g' fzf-git-widget
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#  for lunchy
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi
+
+# for chruby and ruby yuckk
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+
+# set options here for unique history
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_BEEP
