@@ -56,7 +56,9 @@ if [[ $TERM_PROGRAM == 'iTerm.app' && -z $TMUX ]]; then export NVIM_TUI_ENABLE_T
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.cargo/bin"
+# required for tern-jsclass to work
+export NODE_PATH="/usr/local/lib/node_modules"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -174,15 +176,13 @@ bindkey '^g' fzf-git-widget
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#  for lunchy
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-fi
-
 # for chruby and ruby yuckk
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+chruby ruby-2.4.1
+
+source ~/.tmuxinator/tmuxinator.zsh
+
 
 
 # set options here for unique history
