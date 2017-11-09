@@ -140,7 +140,9 @@ alias clearvim='rm -r ~/Library/Preferences/*.vim.*'
 alias editHosts='sudo mvim -f /etc/hosts && dscacheutil -flushcache'
 
 # roadmunk alias
-alias rminspect='docker-compose run --rm --service-ports app node --inspect server.js -w1'
+alias rminspect='docker-compose run --rm --service-ports app node --inspect=0.0.0.0 server.js -w1'
+# for debugging server side while running client side tests.
+alias rminspectclient='docker-compose run --service-ports --rm app node server.js --inspect-tests'
 # stops at first line
 alias rminspectstart='docker-compose run --rm --service-ports app node --inspect --debug-brk server.js -w1'
 
@@ -173,7 +175,8 @@ fzf-git-widget() {
 zle     -N   fzf-git-widget
 bindkey '^g' fzf-git-widget
 
-
+export FZF_DEFAULT_COMMAND='ag --hidden --nocolor -l -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # for chruby and ruby yuckk
