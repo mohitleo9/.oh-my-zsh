@@ -161,7 +161,7 @@ setopt correct
 
 # FZF functions
 __gsel(){
-  command git branch -r\
+  command git branch \
     2> /dev/null | sed 1d | cut -b3- | $(__fzfcmd) -m | while read item; do
     printf '%q ' "$item"
   done
@@ -175,8 +175,9 @@ fzf-git-widget() {
 zle     -N   fzf-git-widget
 bindkey '^g' fzf-git-widget
 
-export FZF_DEFAULT_COMMAND='ag --hidden --nocolor -l -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# // changing fzf FZF_DEFAULT_COMMAND breaks things in fzf.vim.
+# export FZF_DEFAULT_COMMAND='ag --hidden --nocolor -l -g ""'
+export FZF_CTRL_T_COMMAND='ag --hidden --nocolor -l -g ""'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # for chruby and ruby yuckk
